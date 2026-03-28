@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum RaceType {
+  TRAIL
+  ROAD
+  TRACK
+  BACKYARD
+  OTHER
+}
+
+enum EntryMethod {
+  OPEN
+  LOTTERY
+  QUALIFIER
+  INVITATION
+}
+
+enum RaceStatus {
+  ACTIVE
+  DISCONTINUED
+  HIATUS
+  UNKNOWN
+}
+
+enum LifecycleStatus {
+  ANNOUNCED
+  REGISTRATION_OPEN
+  REGISTRATION_CLOSED
+  UPCOMING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  POSTPONED
+}
+
+enum FAQCategory {
+  GENERAL
+  REGISTRATION
+  LOGISTICS
+  COURSE
+  RESULTS
+  TRACKING
+}
+
+model Race {
+  id                    String    @id @default(uuid()) @db.Uuid
+  slug                  String    @unique
+  name                  String
+  shortName             String?
+  distances             String[]
+  distanceKm            Float?
+  raceType              RaceType
+  terrain               String[]
+  city                  String?
+  state                 String?
+  stateSlug             String?
+  country               String
+  countrySlug           String
+  countryCode           String
+  continent             String?
+  latitude              Float?
+  longitude             Float?
+  elevationGainM        Int?
+  elevationLossM        Int?
+  highestPointM         Int?
+  courseDescription      String?   @db.Text
+  courseMapUrl           String?
+  gpxFileUrl            String?
+  stravaSegmentUrl      String?
+  typicalMonth          Int?
+  yearEstablished       Int?
+  maxParticipants       Int?
+  qualificationRequired Boolean   @default(false)
+  qualificationDetails  String?
+  entryMethod           EntryMethod
+  entryFeeUsd           Int?
+  registrationUrl       String?
+  organizerName         String?
+  organizerUrl          String?
+  officialWebsite       String?
+  description           String?   @db.Text
+  history               String?   @db.Text
+  notableFacts          String[]
+  tags                  String[]
+  ultrasignupId         String?
+  itraId                String?
+  duvId                 String?
+  utmbIndexId           String?
+  status                RaceStatus @default(ACTIVE)
+  lastResearched        DateTime?
+  dataQualityScore      Int?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  editions              RaceEdition[]
+  faqs                  FAQ[]
+
+  @@index([countrySlug])
+  @@index([stateSlug])
+  @@index([status])
+}
+
+model RaceEdition {
+  id                   String          @id @default(uuid()) @db.Uuid
+  raceId               String          @db.Uuid
+  year                 Int
+  startDate            DateTime?
+  endDate              DateTime?
+  lifecycleStatus      LifecycleStatus
+  registrationOpens    DateTime?
+  registrationCloses   DateTime?
+  registrationUrl      String?
+  entryFee             String?
+  resultsUrl           String?
+  liveTrackingUrl      String?
+  liveTrackingProvider String?
+  resultsSource        String?
+  numStarters          Int?
+  numFinishers         Int?
+  winningTime          String?
+  winnerName           String?
+  courseRecord          String?
+  dnfRate              Float?
+  editionNotes         String?
+  lastUpdated          DateTime        @default(now())
+
+  race                 Race            @relation(fields: [raceId], references: [id], onDelete: Cascade)
+
+  @@unique([raceId, year])
+  @@index([year])
+}
+
+model FAQ {
+  id        String      @id @default(uuid()) @db.Uuid
+  raceId    String      @db.Uuid
+  question  String
+  answer    String      @db.Text
+  category  FAQCategory
+  sortOrder Int         @default(0)
+
+  race      Race        @relation(fields: [raceId], references: [id], onDelete: Cascade)
+
+  @@index([raceId])
+}
