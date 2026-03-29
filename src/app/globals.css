@@ -1,11 +1,160 @@
 @import "tailwindcss";
 
 :root {
+  --color-accent: #d95d39;
+  --color-accent-hover: #c04e2d;
+  --color-accent-light: rgba(217, 93, 57, 0.08);
+  --color-text: #111827;
+  --color-text-secondary: #6b7280;
+  --color-text-body: #374151;
+  --color-text-light: #9ca3af;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f5f6f7;
+  --color-bg-warm: #fffbf7;
+  --color-border: #e5e7eb;
+  --color-border-light: #f3f4f6;
+  --color-footer: #1f2937;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
   --font-inter: "Inter", system-ui, sans-serif;
+  --font-serif: "DM Serif Display", serif;
 }
 
 body {
   font-family: var(--font-inter);
+  color: var(--color-text-body);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Serif headline utility */
+.font-serif-display {
+  font-family: var(--font-serif);
+}
+
+/* Accent dot in headlines */
+.accent-dot {
+  color: var(--color-accent);
+}
+
+/* Hero section */
+.hero-section {
+  background: linear-gradient(180deg, #ffffff 0%, #fffbf7 100%);
+}
+
+/* Hero rule */
+.hero-rule {
+  width: 40px;
+  height: 2px;
+  background: var(--color-accent);
+  border: none;
+  border-radius: 1px;
+}
+
+/* Search input focus glow */
+.search-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(217, 93, 57, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Popular chip arrow animation */
+.chip-arrow {
+  display: inline-block;
+  font-size: 12px;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.2s ease, margin-left 0.2s ease;
+  margin-left: 0;
+}
+
+.popular-chip:hover .chip-arrow {
+  max-width: 16px;
+  margin-left: 4px;
+}
+
+/* Distance pill hover */
+.distance-pill {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.distance-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent);
+}
+
+/* Pill icon colors */
+.pill-100m { background: rgba(184, 74, 37, 0.08); color: #b84a25; }
+.pill-200 { background: rgba(160, 64, 32, 0.08); color: #a04020; }
+.pill-yard { background: rgba(232, 149, 110, 0.08); color: #c07040; }
+.pill-timed { background: rgba(212, 132, 92, 0.08); color: #b86838; }
+
+/* Race card */
+.race-card {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.race-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.race-card-arrow {
+  opacity: 0;
+  transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.race-card:hover .race-card-arrow {
+  color: var(--color-accent);
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+/* Location links underline animation */
+.location-link {
+  position: relative;
+  display: inline-block;
+}
+
+.location-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-accent);
+  transition: width 0.2s ease;
+}
+
+.location-link:hover {
+  color: var(--color-accent);
+}
+
+.location-link:hover::after {
+  width: 100%;
+}
+
+/* Status badges */
+.status-closed {
+  background: var(--color-bg-alt);
+  color: var(--color-text-light);
+  border: 1px solid var(--color-border);
+}
+
+.status-open {
+  background: rgba(217, 93, 57, 0.08);
+  color: var(--color-accent);
+  border: 1px solid rgba(217, 93, 57, 0.2);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .nav-suggest {
+    display: none;
+  }
 }
 
 @layer utilities {

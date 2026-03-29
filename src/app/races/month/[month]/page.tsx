@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { month } = await params;
   const name = monthNames[month.toLowerCase()] || month;
   return {
-    title: `Ultra Marathons in ${name}`,
-    description: `Ultra marathon races happening in ${name}. Find upcoming ultras, registration dates, and race details.`,
+    title: `Ultramarathons in ${name}`,
+    description: `Ultramarathon races happening in ${name}. Find upcoming ultras, registration dates, and race details.`,
   };
 }
 
@@ -26,10 +26,10 @@ export default async function MonthPage({ params }: Props) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-4xl font-extrabold text-white mb-3">Ultra Marathons in {monthName}</h1>
-      <p className="text-zinc-400 text-lg mb-10">Races typically held in {monthName}</p>
-      <div className="bg-zinc-900/50 border border-zinc-800/60 rounded-xl p-8 text-center">
-        <p className="text-zinc-500">{monthName} race listings are being compiled. Check back soon.</p>
+      <h1 className="text-4xl font-extrabold text-[#111827] mb-3">Ultramarathons in {monthName}</h1>
+      <p className="text-[#6b7280] text-lg mb-10">Races typically held in {monthName}</p>
+      <div className="bg-[#f5f6f7] border border-[#e5e7eb] rounded-xl p-8 text-center">
+        <p className="text-[#6b7280]">{monthName} race listings are being compiled. Check back soon.</p>
       </div>
     </div>
   );

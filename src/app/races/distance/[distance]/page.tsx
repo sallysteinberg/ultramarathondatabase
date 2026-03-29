@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { distance } = await params;
   const label = distanceLabels[distance] || distance;
   return {
-    title: `${label} Ultra Marathon Races`,
-    description: `Browse all ${label} ultra marathon races worldwide. Find registration, results, and course info.`,
+    title: `${label} Ultramarathon Races`,
+    description: `Browse all ${label} ultramarathon races worldwide. Find registration, results, and course info.`,
   };
 }
 
@@ -31,10 +31,10 @@ export default async function DistancePage({ params }: Props) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-4xl font-extrabold text-white mb-3">{label} Ultra Marathon Races</h1>
-      <p className="text-zinc-400 text-lg mb-10">All {label} ultra marathon races worldwide</p>
-      <div className="bg-zinc-900/50 border border-zinc-800/60 rounded-xl p-8 text-center">
-        <p className="text-zinc-500">{label} race listings are being compiled. Check back soon.</p>
+      <h1 className="text-4xl font-extrabold text-[#111827] mb-3">{label} Ultramarathon Races</h1>
+      <p className="text-[#6b7280] text-lg mb-10">All {label} ultramarathon races worldwide</p>
+      <div className="bg-[#f5f6f7] border border-[#e5e7eb] rounded-xl p-8 text-center">
+        <p className="text-[#6b7280]">{label} race listings are being compiled. Check back soon.</p>
       </div>
     </div>
   );

@@ -55,21 +55,21 @@ export default async function RacePage({ params }: Props) {
   return (
     <div>
       {/* Hero */}
-      <section className="relative border-b border-zinc-800/60">
-        <div className="absolute inset-0 bg-gradient-to-b from-amber-500/5 via-transparent to-transparent" />
+      <section className="relative" style={{ borderBottom: "1px solid var(--color-border)" }}>
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(217,93,57,0.03) 0%, transparent 100%)" }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative">
           <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 text-xs font-medium bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">
+            <span className="px-3 py-1 text-xs font-medium rounded-full" style={{ background: "rgba(217,93,57,0.08)", color: "#d95d39", border: "1px solid rgba(217,93,57,0.2)" }}>
               100 Mile
             </span>
-            <span className="px-3 py-1 text-xs font-medium bg-zinc-800/60 text-zinc-400 border border-zinc-700/40 rounded-full">
+            <span className="px-3 py-1 text-xs font-medium rounded-full" style={{ background: "#f5f6f7", color: "#6b7280", border: "1px solid #e5e7eb" }}>
               Trail
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-3 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3" style={{ color: "var(--color-text)" }}>
             {raceName}
           </h1>
-          <p className="text-lg text-zinc-400 flex items-center gap-2">
+          <p className="text-lg flex items-center gap-2" style={{ color: "var(--color-text-secondary)" }}>
             <svg
               className="w-4 h-4"
               fill="none"
@@ -94,13 +94,15 @@ export default async function RacePage({ params }: Props) {
           <div className="mt-6 flex flex-wrap gap-3">
             <a
               href="#"
-              className="px-5 py-2.5 bg-amber-500 text-black font-semibold rounded-lg hover:bg-amber-400 transition-colors text-sm"
+              className="px-5 py-2.5 font-semibold rounded-lg text-sm transition-colors text-white hover:opacity-90"
+              style={{ background: "#d95d39" }}
             >
               Official Website →
             </a>
             <a
               href="#results"
-              className="px-5 py-2.5 bg-zinc-800 text-zinc-300 font-medium rounded-lg hover:bg-zinc-700 transition-colors text-sm border border-zinc-700/60"
+              className="px-5 py-2.5 font-medium rounded-lg text-sm transition-colors"
+              style={{ background: "#f5f6f7", color: "#374151", border: "1px solid #e5e7eb" }}
             >
               View Results
             </a>
@@ -114,18 +116,18 @@ export default async function RacePage({ params }: Props) {
           <div className="lg:col-span-2 space-y-12">
             {/* Description */}
             <section>
-              <h2 className="text-xl font-bold text-white mb-4">
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--color-text)" }}>
                 About This Race
               </h2>
-              <div className="prose prose-invert prose-zinc max-w-none">
-                <p className="text-zinc-400 leading-relaxed">
+              <div className="max-w-none">
+                <p className="leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
                   This is a placeholder description for {raceName}. When
                   populated, this section will contain unique, researched
                   content about the race including its history, course
                   characteristics, what makes it special, and practical
                   information for prospective runners.
                 </p>
-                <p className="text-zinc-400 leading-relaxed mt-4">
+                <p className="leading-relaxed mt-4" style={{ color: "var(--color-text-secondary)" }}>
                   The course traverses rugged mountain terrain with significant
                   elevation change, testing runners&apos; endurance and technical
                   skill across varied surfaces and conditions.
@@ -135,50 +137,53 @@ export default async function RacePage({ params }: Props) {
 
             {/* Results & Tracking */}
             <section id="results">
-              <h2 className="text-xl font-bold text-white mb-4">
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--color-text)" }}>
                 Results & Live Tracking
               </h2>
-              <div className="bg-zinc-900/50 border border-zinc-800/60 rounded-xl p-6">
+              <div className="rounded-xl p-6" style={{ background: "var(--color-bg-alt)", border: "1px solid var(--color-border)" }}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-3">
+                    <h3 className="text-sm font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--color-text-secondary)" }}>
                       2026 Edition
                     </h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-zinc-500">Status</span>
-                        <span className="text-amber-500">Upcoming</span>
+                        <span style={{ color: "var(--color-text-secondary)" }}>Status</span>
+                        <span style={{ color: "#d95d39" }}>Upcoming</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-zinc-500">Starters</span>
-                        <span className="text-zinc-300">—</span>
+                        <span style={{ color: "var(--color-text-secondary)" }}>Starters</span>
+                        <span style={{ color: "var(--color-text)" }}>—</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-zinc-500">Finishers</span>
-                        <span className="text-zinc-300">—</span>
+                        <span style={{ color: "var(--color-text-secondary)" }}>Finishers</span>
+                        <span style={{ color: "var(--color-text)" }}>—</span>
                       </div>
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-3">
+                    <h3 className="text-sm font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--color-text-secondary)" }}>
                       Quick Links
                     </h3>
                     <div className="space-y-2">
                       <a
                         href="#"
-                        className="block text-sm text-zinc-400 hover:text-amber-500 transition-colors"
+                        className="block text-sm transition-colors hover:text-[#d95d39]"
+                        style={{ color: "var(--color-text-secondary)" }}
                       >
                         → Live Tracking
                       </a>
                       <a
                         href="#"
-                        className="block text-sm text-zinc-400 hover:text-amber-500 transition-colors"
+                        className="block text-sm transition-colors hover:text-[#d95d39]"
+                        style={{ color: "var(--color-text-secondary)" }}
                       >
                         → Past Results
                       </a>
                       <a
                         href="#"
-                        className="block text-sm text-zinc-400 hover:text-amber-500 transition-colors"
+                        className="block text-sm transition-colors hover:text-[#d95d39]"
+                        style={{ color: "var(--color-text-secondary)" }}
                       >
                         → UltraSignup Page
                       </a>
@@ -190,22 +195,24 @@ export default async function RacePage({ params }: Props) {
 
             {/* FAQ */}
             <section>
-              <h2 className="text-xl font-bold text-white mb-4">
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--color-text)" }}>
                 Frequently Asked Questions
               </h2>
               <div className="space-y-3">
                 {sampleFaqs.map((faq, i) => (
                   <details
                     key={i}
-                    className="group bg-zinc-900/50 border border-zinc-800/60 rounded-xl"
+                    className="group rounded-xl"
+                    style={{ background: "var(--color-bg-alt)", border: "1px solid var(--color-border)" }}
                   >
-                    <summary className="flex items-center justify-between cursor-pointer p-5 text-white font-medium">
+                    <summary className="flex items-center justify-between cursor-pointer p-5 font-medium" style={{ color: "var(--color-text)" }}>
                       {faq.question}
                       <svg
-                        className="w-5 h-5 text-zinc-500 group-open:rotate-180 transition-transform"
+                        className="w-5 h-5 group-open:rotate-180 transition-transform"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
+                        style={{ color: "var(--color-text-secondary)" }}
                       >
                         <path
                           strokeLinecap="round"
@@ -215,7 +222,7 @@ export default async function RacePage({ params }: Props) {
                         />
                       </svg>
                     </summary>
-                    <div className="px-5 pb-5 text-zinc-400 text-sm leading-relaxed">
+                    <div className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
                       {faq.answer}
                     </div>
                   </details>
@@ -227,8 +234,8 @@ export default async function RacePage({ params }: Props) {
           {/* Sidebar - Quick Facts */}
           <div>
             <div className="sticky top-24">
-              <div className="bg-zinc-900/50 border border-zinc-800/60 rounded-xl p-6">
-                <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-4">
+              <div className="rounded-xl p-6" style={{ background: "var(--color-bg-alt)", border: "1px solid var(--color-border)" }}>
+                <h3 className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: "var(--color-text-secondary)" }}>
                   Quick Facts
                 </h3>
                 <dl className="space-y-3">
@@ -237,8 +244,8 @@ export default async function RacePage({ params }: Props) {
                       key={fact.label}
                       className="flex justify-between text-sm"
                     >
-                      <dt className="text-zinc-500">{fact.label}</dt>
-                      <dd className="text-zinc-200 font-medium">
+                      <dt style={{ color: "var(--color-text-secondary)" }}>{fact.label}</dt>
+                      <dd className="font-medium" style={{ color: "var(--color-text)" }}>
                         {fact.value}
                       </dd>
                     </div>
@@ -246,17 +253,18 @@ export default async function RacePage({ params }: Props) {
                 </dl>
               </div>
 
-              <div className="mt-4 bg-zinc-900/50 border border-zinc-800/60 rounded-xl p-6">
-                <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-3">
+              <div className="mt-4 rounded-xl p-6" style={{ background: "var(--color-bg-alt)", border: "1px solid var(--color-border)" }}>
+                <h3 className="text-sm font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--color-text-secondary)" }}>
                   Registration
                 </h3>
-                <p className="text-sm text-zinc-500 mb-4">
+                <p className="text-sm mb-4" style={{ color: "var(--color-text-secondary)" }}>
                   Entry fee and registration details will be displayed here when
                   available.
                 </p>
                 <a
                   href="#"
-                  className="block w-full text-center px-4 py-2.5 bg-amber-500 text-black font-semibold rounded-lg hover:bg-amber-400 transition-colors text-sm"
+                  className="block w-full text-center px-4 py-2.5 text-white font-semibold rounded-lg hover:opacity-90 transition-colors text-sm"
+                  style={{ background: "#d95d39" }}
                 >
                   Register →
                 </a>

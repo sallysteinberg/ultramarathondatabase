@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, DM_Serif_Display } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({
@@ -7,15 +8,20 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const dmSerifDisplay = DM_Serif_Display({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-serif",
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "Ultra Marathon Database — The Definitive Ultra Race Directory",
-    template: "%s | Ultra Marathon Database",
+    default: "Ultramarathon Database — Every ultra. Researched.",
+    template: "%s | Ultramarathon Database",
   },
   description:
-    "Comprehensive directory of ultra marathon races worldwide. Find 50K, 100K, 100-mile, and backyard ultras with results, registration info, course details, and more.",
+    "Comprehensive directory of ultramarathon races worldwide. Find 50K, 100K, 100-mile, and backyard ultras with results, registration info, course details, and more.",
   keywords: [
-    "ultra marathon",
     "ultramarathon",
     "100 mile race",
     "50k race",
@@ -24,10 +30,10 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL("https://ultramarathondatabase.com"),
   openGraph: {
-    title: "Ultra Marathon Database",
-    description: "The definitive directory of ultra marathon races worldwide.",
+    title: "Ultramarathon Database",
+    description: "The definitive directory of ultramarathon races worldwide.",
     url: "https://ultramarathondatabase.com",
-    siteName: "Ultra Marathon Database",
+    siteName: "Ultramarathon Database",
     type: "website",
   },
 };
@@ -38,130 +44,83 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
-        className={`${inter.variable} font-sans antialiased bg-zinc-950 text-zinc-100 min-h-screen`}
+        className={`${inter.variable} ${dmSerifDisplay.variable} font-sans antialiased min-h-screen`}
+        style={{ color: "var(--color-text-body)", background: "var(--color-bg)" }}
       >
         {/* Navigation */}
-        <nav className="border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              <a href="/" className="flex items-center gap-2">
-                <span className="text-xl font-bold tracking-tight text-white">
-                  Ultra Marathon
-                  <span className="text-amber-500">DB</span>
-                </span>
-              </a>
-              <div className="hidden md:flex items-center gap-8 text-sm text-zinc-400">
-                <a href="/races" className="hover:text-white transition-colors">
-                  All Races
-                </a>
-                <a
-                  href="/races/distance/100-mile"
-                  className="hover:text-white transition-colors"
-                >
-                  100 Milers
-                </a>
-                <a
-                  href="/races/distance/50k"
-                  className="hover:text-white transition-colors"
-                >
-                  50K
-                </a>
-                <a
-                  href="/races/country/united-states"
-                  className="hover:text-white transition-colors"
-                >
-                  US Races
-                </a>
-              </div>
-            </div>
+        <header className="sticky top-0 z-50" style={{ borderBottom: "1px solid var(--color-border)", background: "rgba(255,255,255,0.92)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
+          <div className="flex items-center justify-between h-[60px] max-w-[1120px] mx-auto px-6">
+            <Link href="/" className="text-[17px] font-bold tracking-tight whitespace-nowrap" style={{ color: "var(--color-text)" }}>
+              Ultramarathon{" "}
+              <span className="font-semibold" style={{ color: "var(--color-accent)" }}>Database</span>
+            </Link>
+            <nav className="flex items-center gap-7">
+              <Link href="/races" className="text-sm font-medium transition-colors hover:text-[var(--color-text)]" style={{ color: "var(--color-text-secondary)" }}>
+                Races
+              </Link>
+              <Link href="/races/month/january" className="text-sm font-medium transition-colors hover:text-[var(--color-text)]" style={{ color: "var(--color-text-secondary)" }}>
+                Calendar
+              </Link>
+              <Link href="/races" className="text-sm font-medium transition-colors hover:text-[var(--color-text)]" style={{ color: "var(--color-text-secondary)" }}>
+                Results
+              </Link>
+              <Link href="/suggest" className="nav-suggest text-[13px] transition-colors hover:text-[var(--color-accent)]" style={{ color: "var(--color-text-light)", borderLeft: "1px solid var(--color-border)", paddingLeft: "28px" }}>
+                Suggest an Edit
+              </Link>
+            </nav>
           </div>
-        </nav>
+        </header>
 
         {/* Main Content */}
         <main>{children}</main>
 
         {/* Footer */}
-        <footer className="border-t border-zinc-800/60 mt-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="md:col-span-2">
-                <h3 className="text-lg font-bold text-white mb-2">
-                  Ultra Marathon<span className="text-amber-500">DB</span>
-                </h3>
-                <p className="text-zinc-500 text-sm max-w-md">
-                  The definitive directory of ultra marathon races worldwide.
-                  Researched, organized, and built for the ultrarunning
-                  community.
-                </p>
+        <footer style={{ background: "var(--color-footer)", borderTop: "2px solid var(--color-accent)" }} className="pt-14">
+          <div className="max-w-[1120px] mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-12 pb-12">
+              <div>
+                <div className="text-base font-bold text-gray-50 mb-2 tracking-tight">
+                  Ultramarathon{" "}
+                  <span className="font-semibold" style={{ color: "var(--color-accent)" }}>Database</span>
+                </div>
+                <div className="text-sm text-gray-400">
+                  Built for the ultra community.
+                </div>
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-zinc-300 mb-3">
-                  Browse
+                <h4 className="text-[11px] font-bold uppercase tracking-wider text-gray-500 mb-4">
+                  Navigate
                 </h4>
-                <ul className="space-y-2 text-sm text-zinc-500">
-                  <li>
-                    <a
-                      href="/races"
-                      className="hover:text-zinc-300 transition-colors"
-                    >
-                      All Races
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/races/distance/100-mile"
-                      className="hover:text-zinc-300 transition-colors"
-                    >
-                      100 Mile Races
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/races/distance/50k"
-                      className="hover:text-zinc-300 transition-colors"
-                    >
-                      50K Races
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/races/country/united-states"
-                      className="hover:text-zinc-300 transition-colors"
-                    >
-                      US Races
-                    </a>
-                  </li>
-                </ul>
+                <div className="flex flex-col gap-2.5">
+                  <Link href="/races" className="text-sm text-gray-300 hover:text-[var(--color-accent)] transition-colors">
+                    Races
+                  </Link>
+                  <Link href="/races/month/january" className="text-sm text-gray-300 hover:text-[var(--color-accent)] transition-colors">
+                    Calendar
+                  </Link>
+                  <Link href="/races" className="text-sm text-gray-300 hover:text-[var(--color-accent)] transition-colors">
+                    Results
+                  </Link>
+                </div>
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-zinc-300 mb-3">
-                  About
+                <h4 className="text-[11px] font-bold uppercase tracking-wider text-gray-500 mb-4">
+                  Contribute
                 </h4>
-                <ul className="space-y-2 text-sm text-zinc-500">
-                  <li>
-                    <a
-                      href="/about"
-                      className="hover:text-zinc-300 transition-colors"
-                    >
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/contact"
-                      className="hover:text-zinc-300 transition-colors"
-                    >
-                      Contact
-                    </a>
-                  </li>
-                </ul>
+                <div className="flex flex-col gap-2.5">
+                  <Link href="/suggest" className="text-sm text-gray-300 hover:text-[var(--color-accent)] transition-colors">
+                    Suggest an Edit
+                  </Link>
+                  <Link href="/about" className="text-sm text-gray-300 hover:text-[var(--color-accent)] transition-colors">
+                    About
+                  </Link>
+                </div>
               </div>
             </div>
-            <div className="mt-10 pt-6 border-t border-zinc-800/60 text-center text-xs text-zinc-600">
-              © {new Date().getFullYear()} ultramarathondatabase.com — All
-              rights reserved.
+            <div className="border-t border-gray-700 py-5 text-center text-[13px] text-gray-500">
+              © {new Date().getFullYear()} Ultramarathon Database
             </div>
           </div>
         </footer>
