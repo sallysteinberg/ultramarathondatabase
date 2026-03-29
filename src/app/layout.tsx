@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, DM_Serif_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
@@ -8,15 +8,9 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const dmSerifDisplay = DM_Serif_Display({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-serif",
-});
-
 export const metadata: Metadata = {
   title: {
-    default: "Ultramarathon Database — Every ultra. Researched.",
+    default: "Ultramarathon Database — Every ultra. Every distance.",
     template: "%s | Ultramarathon Database",
   },
   description:
@@ -46,15 +40,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${dmSerifDisplay.variable} font-sans antialiased min-h-screen`}
+        className={`${inter.variable} font-sans antialiased min-h-screen`}
         style={{ color: "var(--color-text-body)", background: "var(--color-bg)" }}
       >
         {/* Navigation */}
         <header className="sticky top-0 z-50" style={{ borderBottom: "1px solid var(--color-border)", background: "rgba(255,255,255,0.92)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
           <div className="flex items-center justify-between h-[60px] max-w-[1120px] mx-auto px-6">
             <Link href="/" className="text-[17px] font-bold tracking-tight whitespace-nowrap" style={{ color: "var(--color-text)" }}>
-              Ultramarathon{" "}
-              <span className="font-semibold" style={{ color: "var(--color-accent)" }}>Database</span>
+              Ultramarathon Database
             </Link>
             <nav className="flex items-center gap-7">
               <Link href="/races" className="text-sm font-medium transition-colors hover:text-[var(--color-text)]" style={{ color: "var(--color-text-secondary)" }}>
@@ -77,13 +70,12 @@ export default function RootLayout({
         <main>{children}</main>
 
         {/* Footer */}
-        <footer style={{ background: "var(--color-footer)", borderTop: "2px solid var(--color-accent)" }} className="pt-14">
+        <footer style={{ background: "var(--color-footer)" }} className="pt-14">
           <div className="max-w-[1120px] mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-12 pb-12">
               <div>
                 <div className="text-base font-bold text-gray-50 mb-2 tracking-tight">
-                  Ultramarathon{" "}
-                  <span className="font-semibold" style={{ color: "var(--color-accent)" }}>Database</span>
+                  Ultramarathon Database
                 </div>
                 <div className="text-sm text-gray-400">
                   Built for the ultra community.

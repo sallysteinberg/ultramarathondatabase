@@ -1,30 +1,18 @@
 import Link from "next/link";
 
 const distanceCategories = [
-  { name: "50K", slug: "50k", sub: "31 miles", type: "dot", color: "#d95d39" },
-  { name: "50 Mile", slug: "50-mile", sub: "The classic", type: "dot", color: "#e07c52" },
-  { name: "100K", slug: "100k", sub: "62 miles", type: "dot", color: "#c7522a" },
-  {
-    name: "100 Mile", slug: "100-mile", sub: "The buckle", type: "icon", iconClass: "pill-100m",
-    icon: <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M8 1l1.5 3.5L13 5.5l-2.5 2.5L11 12 8 10.5 5 12l.5-4L3 5.5l3.5-1z"/></svg>,
-  },
-  {
-    name: "200+", slug: "200-plus", sub: "Sleep is optional", type: "icon", iconClass: "pill-200",
-    icon: <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M13.5 8.5a5.5 5.5 0 1 1-3-5.2"/><path d="M13.5 3v5.5h-3"/></svg>,
-  },
-  {
-    name: "Backyard", slug: "backyard", sub: "Last one standing", type: "icon", iconClass: "pill-yard",
-    icon: <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M2 8a6 6 0 0 1 12 0"/><path d="M14 8a6 6 0 0 1-12 0"/><circle cx="8" cy="8" r="1.5"/></svg>,
-  },
-  {
-    name: "Timed", slug: "24-hour", sub: "Fixed time events", type: "icon", iconClass: "pill-timed",
-    icon: <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><circle cx="8" cy="9" r="5.5"/><path d="M8 6v3l2 1.5"/><path d="M6.5 1.5h3"/><path d="M8 1.5V3"/></svg>,
-  },
+  { name: "50K", slug: "50k", sub: "31 miles" },
+  { name: "50 Mile", slug: "50-mile", sub: "The classic" },
+  { name: "100K", slug: "100k", sub: "62 miles" },
+  { name: "100 Mile", slug: "100-mile", sub: "The buckle" },
+  { name: "200+", slug: "200-plus", sub: "Sleep is optional" },
+  { name: "Backyard", slug: "backyard", sub: "Last one standing" },
+  { name: "Timed", slug: "24-hour", sub: "Fixed time events" },
 ];
 
 const upcomingRaces = [
-  { name: "Western States 100", location: "Olympic Valley, California", month: "Jun", day: "28", distance: "100 Mile", status: "closed", slug: "western-states-100" },
-  { name: "Hardrock 100", location: "Silverton, Colorado", month: "Jul", day: "11", distance: "100 Mile", status: "closed", slug: "hardrock-100" },
+  { name: "Western States 100", location: "Olympic Valley, CA", month: "Jun", day: "28", distance: "100 Mile", status: "closed", slug: "western-states-100" },
+  { name: "Hardrock 100", location: "Silverton, CO", month: "Jul", day: "11", distance: "100 Mile", status: "closed", slug: "hardrock-100" },
   { name: "UTMB Mont-Blanc", location: "Chamonix, France", month: "Aug", day: "28", distance: "100 Mile", status: "open", slug: "utmb-mont-blanc" },
 ];
 
@@ -54,19 +42,16 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="hero-section text-center" style={{ padding: "120px 0 80px" }}>
+      <section className="text-center" style={{ padding: "100px 0 72px", background: "#ffffff" }}>
         <div className="max-w-[1120px] mx-auto px-6">
           <h1
-            className="font-serif-display text-[56px] font-normal leading-[1.1] tracking-tight mb-5"
+            className="text-[48px] sm:text-[52px] font-extrabold leading-[1.1] tracking-tight mb-4"
             style={{ color: "var(--color-text)" }}
           >
-            Every ultra. Every distance<span className="accent-dot">.</span>
-            <br />
-            Research any race<span className="accent-dot">.</span>
+            Every ultra. Every distance.
           </h1>
-          <hr className="hero-rule mx-auto mb-5" />
-          <p className="text-lg max-w-[520px] mx-auto mb-11 leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
-            Race details, results, live tracking, and course info — all in one place.
+          <p className="text-lg max-w-[520px] mx-auto mb-10 leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+            Race details, results, live tracking — all in one place.
           </p>
 
           {/* Search */}
@@ -124,32 +109,18 @@ export default function HomePage() {
               <Link
                 key={cat.slug}
                 href={`/races/distance/${cat.slug}`}
-                className="distance-pill flex-shrink-0 min-w-[148px] p-[18px_24px] rounded-xl text-left flex items-start gap-3"
+                className="distance-pill flex-shrink-0 min-w-[148px] p-[18px_24px] rounded-xl text-left"
                 style={{
                   background: "var(--color-bg)",
                   border: "1px solid var(--color-border)",
                   boxShadow: "var(--shadow-sm)",
                 }}
               >
-                {cat.type === "dot" ? (
-                  <span
-                    className="flex-shrink-0 w-2 h-2 rounded-full mt-[7px]"
-                    style={{ background: cat.color }}
-                  />
-                ) : (
-                  <span
-                    className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-[1px] ${cat.iconClass}`}
-                  >
-                    {cat.icon}
-                  </span>
-                )}
-                <div className="flex-1">
-                  <div className="text-base font-bold tracking-tight mb-[3px]" style={{ color: "var(--color-text)" }}>
-                    {cat.name}
-                  </div>
-                  <div className="text-xs" style={{ color: "var(--color-text-secondary)" }}>
-                    {cat.sub}
-                  </div>
+                <div className="text-base font-bold tracking-tight mb-[3px]" style={{ color: "var(--color-text)" }}>
+                  {cat.name}
+                </div>
+                <div className="text-xs" style={{ color: "var(--color-text-secondary)" }}>
+                  {cat.sub}
                 </div>
               </Link>
             ))}
@@ -169,10 +140,7 @@ export default function HomePage() {
               className="text-[13px] font-semibold flex items-center gap-1 transition-colors hover:opacity-80"
               style={{ color: "var(--color-accent)" }}
             >
-              View full calendar
-              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-              </svg>
+              View full calendar →
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -192,7 +160,7 @@ export default function HomePage() {
                   className="flex-shrink-0 w-16 flex flex-col items-center justify-start pt-7"
                   style={{
                     borderRight: "1px solid var(--color-border-light)",
-                    background: "rgba(217,93,57,0.03)",
+                    background: "rgba(5,150,105,0.03)",
                   }}
                 >
                   <span className="text-[11px] font-bold uppercase tracking-wide leading-none" style={{ color: "var(--color-accent)" }}>

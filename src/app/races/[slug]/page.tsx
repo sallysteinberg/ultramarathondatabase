@@ -56,13 +56,13 @@ export default async function RacePage({ params }: Props) {
     <div>
       {/* Hero */}
       <section className="relative" style={{ borderBottom: "1px solid var(--color-border)" }}>
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(217,93,57,0.03) 0%, transparent 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(5,150,105,0.03) 0%, transparent 100%)" }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative">
           <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 text-xs font-medium rounded-full" style={{ background: "rgba(217,93,57,0.08)", color: "#d95d39", border: "1px solid rgba(217,93,57,0.2)" }}>
+            <span className="px-3 py-1 text-xs font-medium rounded-full" style={{ background: "rgba(5,150,105,0.08)", color: "#059669", border: "1px solid rgba(5,150,105,0.2)" }}>
               100 Mile
             </span>
-            <span className="px-3 py-1 text-xs font-medium rounded-full" style={{ background: "#f5f6f7", color: "#6b7280", border: "1px solid #e5e7eb" }}>
+            <span className="px-3 py-1 text-xs font-medium rounded-full" style={{ background: "#f5f7f9", color: "#6b7280", border: "1px solid #e5e7eb" }}>
               Trail
             </span>
           </div>
@@ -95,14 +95,14 @@ export default async function RacePage({ params }: Props) {
             <a
               href="#"
               className="px-5 py-2.5 font-semibold rounded-lg text-sm transition-colors text-white hover:opacity-90"
-              style={{ background: "#d95d39" }}
+              style={{ background: "#059669" }}
             >
               Official Website →
             </a>
             <a
               href="#results"
               className="px-5 py-2.5 font-medium rounded-lg text-sm transition-colors"
-              style={{ background: "#f5f6f7", color: "#374151", border: "1px solid #e5e7eb" }}
+              style={{ background: "#f5f7f9", color: "#374151", border: "1px solid #e5e7eb" }}
             >
               View Results
             </a>
@@ -149,7 +149,7 @@ export default async function RacePage({ params }: Props) {
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
                         <span style={{ color: "var(--color-text-secondary)" }}>Status</span>
-                        <span style={{ color: "#d95d39" }}>Upcoming</span>
+                        <span style={{ color: "#059669" }}>Upcoming</span>
                       </div>
                       <div className="flex justify-between">
                         <span style={{ color: "var(--color-text-secondary)" }}>Starters</span>
@@ -168,21 +168,21 @@ export default async function RacePage({ params }: Props) {
                     <div className="space-y-2">
                       <a
                         href="#"
-                        className="block text-sm transition-colors hover:text-[#d95d39]"
+                        className="block text-sm transition-colors hover:text-[#059669]"
                         style={{ color: "var(--color-text-secondary)" }}
                       >
                         → Live Tracking
                       </a>
                       <a
                         href="#"
-                        className="block text-sm transition-colors hover:text-[#d95d39]"
+                        className="block text-sm transition-colors hover:text-[#059669]"
                         style={{ color: "var(--color-text-secondary)" }}
                       >
                         → Past Results
                       </a>
                       <a
                         href="#"
-                        className="block text-sm transition-colors hover:text-[#d95d39]"
+                        className="block text-sm transition-colors hover:text-[#059669]"
                         style={{ color: "var(--color-text-secondary)" }}
                       >
                         → UltraSignup Page
@@ -264,7 +264,7 @@ export default async function RacePage({ params }: Props) {
                 <a
                   href="#"
                   className="block w-full text-center px-4 py-2.5 text-white font-semibold rounded-lg hover:opacity-90 transition-colors text-sm"
-                  style={{ background: "#d95d39" }}
+                  style={{ background: "#059669" }}
                 >
                   Register →
                 </a>

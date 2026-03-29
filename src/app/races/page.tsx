@@ -10,7 +10,7 @@ export default function RacesPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-10">
-        <h1 className="text-4xl font-extrabold text-[#111827] mb-3">
+        <h1 className="text-4xl font-extrabold text-[#1a2332] mb-3">
           All Ultramarathon Races
         </h1>
         <p className="text-[#6b7280] text-lg">
@@ -26,8 +26,8 @@ export default function RacesPage() {
               key={filter}
               className={`px-4 py-2 text-sm rounded-lg border transition-all ${
                 filter === "All"
-                  ? "bg-[rgba(217,93,57,0.08)] border-[rgba(217,93,57,0.2)] text-[#d95d39]"
-                  : "bg-white border-[#e5e7eb] text-[#6b7280] hover:border-gray-400 hover:text-[#111827]"
+                  ? "bg-[rgba(5,150,105,0.08)] border-[rgba(5,150,105,0.2)] text-[#059669]"
+                  : "bg-white border-[#e5e7eb] text-[#6b7280] hover:border-gray-400 hover:text-[#1a2332]"
               }`}
             >
               {filter}
